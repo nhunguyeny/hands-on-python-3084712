@@ -16,6 +16,9 @@ back_to_dict = json.loads(einstein_json)
 print(einstein_json)
 pprint(back_to_dict)
 
+# Open file laureats.csv in reading mode
+# Read file data to parameter as dictionary using DictReader
+# Convert dictionary data into a list 
 with open("laureates.csv", "r") as f:
     reader = csv.DictReader(f)
     laureates = list(reader)
@@ -28,7 +31,11 @@ with open("laureates.csv", "r") as f:
 
 laureates_beginning_with_a = []
 # LinkedIn learner code here
-
+for la in laureates:
+    if la['name'][0] == "A":
+        laureates_beginning_with_a.append(la)
+    if la['name'][0] == "B":
+        pprint(la)
 
 with open("laureates.json", "w") as f:
     json.dump(laureates_beginning_with_a, f, indent=2)
